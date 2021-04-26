@@ -5,7 +5,6 @@ import { getDailyChartForSymbol } from './ApiConnector';
 
 const Chart = () => {
 
-
     const [stockData, setStockData] = useState([]);
 
     // Fetch daily stock chart for TSLA when the component mounts
