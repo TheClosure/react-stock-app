@@ -2,13 +2,15 @@ import React, { useState, useEffect } from 'react';
 import { CanvasJSChart } from 'canvasjs-react-charts';
 import { getDailyChartForSymbol } from './ApiConnector';
 
+
 const Chart = () => {
+
     const [stockData, setStockData] = useState([]);
 
     // Fetch daily stock chart for TSLA when the component mounts
     useEffect(() => {
         const fetchStockData = async () => {
-            const result = await getDailyChartForSymbol('TSLA');
+            const result = await getDailyChartForSymbol('AMC');
 
             setStockData(formatStockData(result.data['Time Series (Daily)']));
         };
@@ -19,6 +21,11 @@ const Chart = () => {
     return (
         <CanvasJSChart
             options={ {
+                title: {
+                    display: true,
+                    text: 'Ticker Symbol AMC',
+                    fontSize: 20
+                },
                 axisY: {
                     // Minimum value is 10% less than the lowest price in the dataset
                     minimum: Math.min(...stockData.map(data => data.low)) / 1.1,
@@ -72,6 +79,7 @@ const Chart = () => {
                 data: [
                     {
                         type: 'candlestick',
+                        color: 'green',
                         dataPoints: stockData.map(stockData => ({
                             x: new Date(stockData.date),
                             // The OHLC for the data point
@@ -88,7 +96,7 @@ const Chart = () => {
             } }
         />
     );
-};
+}
 
 function formatStockData(stockData) {
     // Convert stockData from an object to an array
@@ -106,3 +114,5 @@ function formatStockData(stockData) {
 }
 
 export default Chart;
+
+
