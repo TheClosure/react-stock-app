@@ -10,7 +10,7 @@
     "axios-cache-adapter": "^2.5.0",
     "canvasjs-react-charts": "^1.0.5",
     "localforage": "^1.7.4",
-    "node-sass": "^4.14.1",
+    "node-sass": "^7.0.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1"
